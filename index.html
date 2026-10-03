@@ -243,7 +243,7 @@
     background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius);
     overflow:hidden;box-shadow:var(--shadow-card);
   }
-  .product + .product{margin-top:1.6rem;}
+  .product-list{display:grid;grid-auto-rows:1fr;gap:1.6rem;}
   .product-media{position:relative;min-height:220px;background:var(--color-surface-2);}
   .product-media img{width:100%;height:100%;object-fit:cover;}
   .product-media.icon-panel{display:flex;align-items:center;justify-content:center;background:
@@ -256,7 +256,8 @@
     font-family:var(--font-mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;
     padding:.32rem .6rem;border-radius:6px;
   }
-  .product-body{padding:clamp(1.6rem,3vw,2.4rem);}
+  .product-body{padding:clamp(1.6rem,3vw,2.4rem);display:flex;flex-direction:column;}
+  .product-body .product-cta{margin-top:auto;padding-top:1.6rem;}
   .product-body h3{font-size:var(--step-h3);}
   .product-body h3 em{color:var(--color-emph);font-style:italic;font-weight:500;font-size:.72em;display:block;margin-top:.15rem;}
   .product-body .lead{margin-top:.8rem;color:var(--color-text-muted);font-size:.96rem;}
@@ -275,9 +276,10 @@
   .app-list{display:flex;flex-direction:column;gap:.4rem;}
   .app-list li{font-size:.88rem;color:var(--color-text-muted);padding-left:1rem;position:relative;}
   .app-list li::before{content:"";position:absolute;left:0;top:.55em;width:5px;height:5px;border-radius:50%;background:var(--color-accent);}
-  @media (max-width:760px){
+  @media (max-width:900px){
     .product{grid-template-columns:1fr;}
-    .product-media{min-height:170px;}
+    .product-list{grid-auto-rows:auto;}
+    .product-media{min-height:0;aspect-ratio:3/2;}
   }
 
   /* ============ BIOTECNOLOGIA ============ */
@@ -479,6 +481,7 @@
         <p>Da Menta Arvensis à Floresta Amazónica: ingredientes de origem natural, com rastreabilidade completa, para as indústrias farmacêutica, cosmética e nutracêutica.</p>
       </div>
 
+      <div class="product-list">
       <article class="product">
         <div class="product-media"><span class="product-tag">YSC · desde 1966</span><img src="img/menta.jpg" loading="lazy" decoding="async" alt="Folhas de Menta Arvensis, matéria-prima do mentol natural"></div>
         <div class="product-body">
@@ -567,6 +570,7 @@
           <div class="product-cta"><a data-product="Aromas Personalizados" class="btn btn-outline" href="mailto:ysclpharma@ysclpharma.com?subject=Pedido%20de%20ficha%20t%C3%A9cnica%20%E2%80%94%20Aromas%20Personalizados">Pedir ficha técnica</a></div>
         </div>
       </article>
+      </div>
     </div>
   </section>
 
