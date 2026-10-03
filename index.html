@@ -342,11 +342,31 @@
   .footer-col a:hover{color:var(--color-brand);}
   .footer-bottom{border-top:1px solid var(--color-border);padding-block:1.2rem;font-size:.78rem;color:var(--color-text-muted);
     display:flex;flex-wrap:wrap;justify-content:space-between;gap:.6rem;font-family:var(--font-mono);}
+
+  /* ============ LANG SWITCH ============ */
+  .lang-bar{border-bottom:1px solid var(--color-border);}
+  .lang-switch{display:flex;justify-content:flex-end;gap:.4rem;padding-block:.35rem;}
+  .lang-switch button{
+    display:inline-flex;align-items:center;gap:.35rem;padding:.2rem .45rem;border-radius:6px;
+    background:none;border:1px solid transparent;cursor:pointer;
+    font-family:var(--font-mono);font-size:.72rem;font-weight:600;color:var(--color-text-muted);
+  }
+  .lang-switch button:hover{color:var(--color-text);border-color:var(--color-border);}
+  .lang-switch button[aria-pressed="true"]{color:var(--color-text);border-color:var(--color-accent);}
+  .lang-switch svg{width:20px;height:13px;border-radius:2px;box-shadow:0 0 0 1px rgba(0,0,0,.12);}
+  @media (max-width:860px){nav.menu{top:96px;height:calc(100vh - 96px);}}
 </style>
 </head>
 <body>
 
 <header>
+  <div class="lang-bar">
+    <div class="wrap lang-switch" role="group" aria-label="Idioma">
+      <button type="button" data-lang="en" aria-pressed="false"><svg viewBox="0 0 60 30" aria-hidden="true"><clipPath id="uk-c"><path d="M30,15h30v15zv15h-30zh-30v-15zv-15h30z"/></clipPath><path d="M0,0v30h60v-30z" fill="#012169"/><path d="M0,0 60,30M60,0 0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 60,30M60,0 0,30" clip-path="url(#uk-c)" stroke="#C8102E" stroke-width="4"/><path d="M30,0v30M0,15h60" stroke="#fff" stroke-width="10"/><path d="M30,0v30M0,15h60" stroke="#C8102E" stroke-width="6"/></svg>EN</button>
+      <button type="button" data-lang="es" aria-pressed="false"><svg viewBox="0 0 3 2" aria-hidden="true"><path fill="#AA151B" d="M0 0h3v2H0z"/><path fill="#F1BF00" d="M0 .5h3v1H0z"/></svg>ES</button>
+      <button type="button" data-lang="pt" aria-pressed="true"><svg viewBox="0 0 3 2" aria-hidden="true"><path fill="#DA291C" d="M0 0h3v2H0z"/><path fill="#046A38" d="M0 0h1.2v2H0z"/><circle cx="1.2" cy="1" r=".42" fill="#FFE900"/><circle cx="1.2" cy="1" r=".25" fill="#DA291C"/></svg>PT</button>
+    </div>
+  </div>
   <div class="wrap nav-row menu-panel">
     <a class="brand" href="#inicio">
       <span class="brand-mark">
@@ -732,6 +752,182 @@
         btn.setAttribute('aria-expanded','false');
       });
     });
+  })();
+</script>
+<script>
+  /* ============ I18N ============ */
+  // Texto PT original é a chave; [EN, ES]. Textos sem entrada (marcas, estirpes, números) ficam iguais.
+  (function(){
+    var T = {
+      "Sobre nós":["About us","Sobre nosotros"],
+      "Matérias-Primas":["Raw Materials","Materias Primas"],
+      "Biotecnologia":["Biotechnology","Biotecnología"],
+      "Aplicações":["Applications","Aplicaciones"],
+      "Grupo":["Group","Grupo"],
+      "Pedir Ficha Técnica":["Request Data Sheet","Solicitar Ficha Técnica"],
+      "Pedir ficha técnica":["Request data sheet","Solicitar ficha técnica"],
+      "Abrir menu":["Open menu","Abrir menú"],
+      "Grupo YSCL Pharma — Matérias-Primas · Aromas · Biotecnologia":["YSCL Pharma Group — Raw Materials · Flavours · Biotechnology","Grupo YSCL Pharma — Materias Primas · Aromas · Biotecnología"],
+      "Da origem":["From source","Del origen"],
+      "à fórmula.":["to formula.","a la fórmula."],
+      "Selecionamos ingredientes de origem natural e biotecnológica com os mais elevados padrões de qualidade, para desenvolver soluções inovadoras destinadas às indústrias farmacêutica, cosmética, de suplementação alimentar e biotecnologia.":["We select natural and biotechnological ingredients to the highest quality standards, developing innovative solutions for the pharmaceutical, cosmetic, food supplement and biotechnology industries.","Seleccionamos ingredientes de origen natural y biotecnológico con los más altos estándares de calidad, para desarrollar soluciones innovadoras destinadas a las industrias farmacéutica, cosmética, de suplementación alimentaria y biotecnología."],
+      "Ver matérias-primas":["View raw materials","Ver materias primas"],
+      "Falar com um especialista":["Talk to a specialist","Hablar con un especialista"],
+      "Duas empresas de referência no mercado brasileiro, unidas em 2024 num só grupo especializado em ingredientes funcionais.":["Two leading companies in the Brazilian market, united in 2024 into a single group specialised in functional ingredients.","Dos empresas de referencia en el mercado brasileño, unidas en 2024 en un solo grupo especializado en ingredientes funcionales."],
+      "Fundação da YSC — única produtora brasileira de mentol natural.":["YSC is founded — Brazil's only producer of natural menthol.","Fundación de YSC — única productora brasileña de mentol natural."],
+      "Fundação da Intercolor — referência em aromas e fragrâncias.":["Intercolor is founded — a benchmark in flavours and fragrances.","Fundación de Intercolor — referencia en aromas y fragancias."],
+      "União estratégica das duas empresas dá origem à YSCL Pharma.":["The strategic union of both companies gives rise to YSCL Pharma.","La unión estratégica de ambas empresas da origen a YSCL Pharma."],
+      "Portfólio técnico expandido com soluções biotecnológicas.":["Technical portfolio expanded with biotechnological solutions.","Portafolio técnico ampliado con soluciones biotecnológicas."],
+      "Natureza, ciência e inovação que geram valor.":["Nature, science and innovation that create value.","Naturaleza, ciencia e innovación que generan valor."],
+      "A YSCL Pharma resulta da união estratégica de duas empresas de referência no mercado brasileiro: a Intercolor, fundada em 1987 e reconhecida pela excelência no desenvolvimento de aromas e fragrâncias, e a YSC, única produtora de mentol natural do Brasil desde 1966. Concretizada em 2024, esta integração consolidou décadas de conhecimento técnico, inovação e experiência industrial num grupo sólido e altamente especializado.":["YSCL Pharma is the result of the strategic union of two leading companies in the Brazilian market: Intercolor, founded in 1987 and recognised for excellence in developing flavours and fragrances, and YSC, Brazil's only producer of natural menthol since 1966. Completed in 2024, this integration brought together decades of technical know-how, innovation and industrial experience into a solid, highly specialised group.","YSCL Pharma es el resultado de la unión estratégica de dos empresas de referencia en el mercado brasileño: Intercolor, fundada en 1987 y reconocida por su excelencia en el desarrollo de aromas y fragancias, y YSC, única productora de mentol natural de Brasil desde 1966. Concretada en 2024, esta integración consolidó décadas de conocimiento técnico, innovación y experiencia industrial en un grupo sólido y altamente especializado."],
+      "Com forte aposta em investigação, desenvolvimento e qualidade, expandimos a nossa atuação para uma linha própria de cosméticos, mantendo a comercialização de matérias-primas de elevada qualidade — aromas, fragrâncias, óleos essenciais e mentol cristal natural.":["With a strong commitment to research, development and quality, we have expanded into our own cosmetics line, while continuing to supply high-quality raw materials — flavours, fragrances, essential oils and natural crystal menthol.","Con una fuerte apuesta por la investigación, el desarrollo y la calidad, ampliamos nuestra actividad a una línea propia de cosméticos, manteniendo la comercialización de materias primas de alta calidad — aromas, fragancias, aceites esenciales y mentol cristal natural."],
+      "Em parceria estratégica com a Gabbia e a BioSyn, ampliámos o portfólio de matérias-primas especializadas, disponibilizando probióticos, prebióticos, pós-bióticos e beta-glucana para as indústrias de suplementação alimentar humana e veterinária.":["In strategic partnership with Gabbia and BioSyn, we have broadened our portfolio of specialised raw materials, offering probiotics, prebiotics, postbiotics and beta-glucan to the human and veterinary food supplement industries.","En alianza estratégica con Gabbia y BioSyn, ampliamos el portafolio de materias primas especializadas, ofreciendo probióticos, prebióticos, posbióticos y betaglucano para las industrias de suplementación alimentaria humana y veterinaria."],
+      "Excelência":["Excellence","Excelencia"],
+      "Matérias-primas de elevada qualidade, selecionadas com rigor.":["High-quality raw materials, rigorously selected.","Materias primas de alta calidad, seleccionadas con rigor."],
+      "Inovação":["Innovation","Innovación"],
+      "Investimento contínuo em investigação e tecnologia para criar soluções diferenciadas.":["Continuous investment in research and technology to create differentiated solutions.","Inversión continua en investigación y tecnología para crear soluciones diferenciadas."],
+      "Segurança":["Safety","Seguridad"],
+      "Rigorosos padrões de qualidade, segurança e conformidade regulatória.":["Rigorous standards of quality, safety and regulatory compliance.","Rigurosos estándares de calidad, seguridad y cumplimiento normativo."],
+      "Parceria":["Partnership","Colaboración"],
+      "Relações duradouras com parceiros, clientes e consumidores.":["Lasting relationships with partners, customers and consumers.","Relaciones duraderas con socios, clientes y consumidores."],
+      "Sustentabilidade":["Sustainability","Sostenibilidad"],
+      "Compromisso com práticas responsáveis e respeito pelo meio ambiente.":["Commitment to responsible practices and respect for the environment.","Compromiso con prácticas responsables y respeto por el medio ambiente."],
+      "Apresentação de produtos":["Product overview","Presentación de productos"],
+      "Da Menta Arvensis à Floresta Amazónica: ingredientes de origem natural, com rastreabilidade completa, para as indústrias farmacêutica, cosmética e nutracêutica.":["From Mentha arvensis to the Amazon Rainforest: natural ingredients with full traceability for the pharmaceutical, cosmetic and nutraceutical industries.","De la Menta Arvensis a la Selva Amazónica: ingredientes de origen natural, con trazabilidad completa, para las industrias farmacéutica, cosmética y nutracéutica."],
+      "YSC · desde 1966":["YSC · since 1966","YSC · desde 1966"],
+      "Folhas de Menta Arvensis, matéria-prima do mentol natural":["Mentha arvensis leaves, the raw material for natural menthol","Hojas de Menta Arvensis, materia prima del mentol natural"],
+      "Mentol Natural":["Natural Menthol","Mentol Natural"],
+      "A YSC, empresa do grupo, é a única produtora brasileira de mentol natural — um ingrediente de elevada pureza, origem rastreável e qualidade consistente, reconhecido pelas propriedades refrescantes, analgésicas e antissépticas.":["YSC, a group company, is Brazil's only producer of natural menthol — a high-purity ingredient with traceable origin and consistent quality, known for its cooling, analgesic and antiseptic properties.","YSC, empresa del grupo, es la única productora brasileña de mentol natural — un ingrediente de alta pureza, origen trazable y calidad constante, reconocido por sus propiedades refrescantes, analgésicas y antisépticas."],
+      "Apresentações disponíveis":["Available forms","Presentaciones disponibles"],
+      "Mentol Cristalizado Natural":["Natural Crystallised Menthol","Mentol Cristalizado Natural"],
+      "Mentol Natural em Pó":["Natural Menthol Powder","Mentol Natural en Polvo"],
+      "Óleo Tri-retificado":["Triple-rectified Oil","Aceite Trirrectificado"],
+      "Óleo Desmentolado":["Dementholised Oil","Aceite Desmentolado"],
+      "Óleo Bruto":["Crude Oil","Aceite Bruto"],
+      "Óleo de Menta Piperita":["Peppermint Oil","Aceite de Menta Piperita"],
+      "Óleo de Spearmint":["Spearmint Oil","Aceite de Hierbabuena"],
+      "Ativos refrescantes e analgésicos para OTC, higiene oral e dermocosmética":["Cooling and analgesic actives for OTC, oral care and dermocosmetics","Activos refrescantes y analgésicos para OTC, higiene bucal y dermocosmética"],
+      "Base industrial para extração de mentol e formulações farmacêuticas/cosméticas":["Industrial base for menthol extraction and pharmaceutical/cosmetic formulations","Base industrial para la extracción de mentol y formulaciones farmacéuticas/cosméticas"],
+      "Perfumaria funcional e blends aromáticos":["Functional perfumery and aromatic blends","Perfumería funcional y mezclas aromáticas"],
+      "YSC · Amazónia & Cerrado":["YSC · Amazon & Cerrado","YSC · Amazonía y Cerrado"],
+      "Óleos essenciais, óleos vegetais e manteigas naturais":["Essential oils, vegetable oils and natural butters","Aceites esenciales, aceites vegetales y mantecas naturales"],
+      "Óleos & Manteigas Naturais":["Natural Oils & Butters","Aceites y Mantecas Naturales"],
+      "Óleos essenciais, óleos vegetais e manteigas de elevada pureza, provenientes de matérias-primas selecionadas na Floresta Amazónica e na Região do Cerrado, extraídas com processos que preservam a integridade dos compostos naturais.":["High-purity essential oils, vegetable oils and butters, sourced from raw materials selected in the Amazon Rainforest and the Cerrado region, extracted with processes that preserve the integrity of natural compounds.","Aceites esenciales, aceites vegetales y mantecas de alta pureza, procedentes de materias primas seleccionadas en la Selva Amazónica y en la región del Cerrado, extraídas con procesos que preservan la integridad de los compuestos naturales."],
+      "Óleos essenciais & vegetais":["Essential & vegetable oils","Aceites esenciales y vegetales"],
+      "Laranja Doce & Amarga":["Sweet & Bitter Orange","Naranja Dulce y Amarga"],
+      "Limão Siciliano":["Sicilian Lemon","Limón Siciliano"],
+      "Eucalipto Globulus":["Eucalyptus Globulus","Eucalipto Globulus"],
+      "Cravo-da-Índia":["Clove","Clavo"],
+      "Manteigas naturais":["Natural butters","Mantecas naturales"],
+      "Produtos farmacêuticos e fitoterápicos":["Pharmaceutical and herbal products","Productos farmacéuticos y fitoterápicos"],
+      "Cosmética, dermocosmética e cuidados capilares":["Cosmetics, dermocosmetics and hair care","Cosmética, dermocosmética y cuidado capilar"],
+      "Aromaterapia, sabonetes e higiene pessoal":["Aromatherapy, soaps and personal care","Aromaterapia, jabones e higiene personal"],
+      "Intercolor · desde 1987":["Intercolor · since 1987","Intercolor · desde 1987"],
+      "Frascos de óleos essenciais e velas para aromaterapia":["Essential oil bottles and aromatherapy candles","Frascos de aceites esenciales y velas de aromaterapia"],
+      "Aromas Personalizados":["Custom Flavours","Aromas Personalizados"],
+      "Na Intercolor desenvolvemos aromas sob medida para cada cliente, mercado e aplicação — pela reprodução fiel de um perfil sensorial de referência ou pela criação de soluções exclusivas, alinhadas ao posicionamento de cada produto.":["At Intercolor we develop tailor-made flavours for each customer, market and application — by faithfully reproducing a reference sensory profile or by creating exclusive solutions aligned with each product's positioning.","En Intercolor desarrollamos aromas a medida para cada cliente, mercado y aplicación — mediante la reproducción fiel de un perfil sensorial de referencia o la creación de soluciones exclusivas, alineadas con el posicionamiento de cada producto."],
+      "Indústrias servidas":["Industries served","Industrias atendidas"],
+      "Alimentar":["Food","Alimentaria"],
+      "Bebidas":["Beverages","Bebidas"],
+      "Farmacêutica & Nutracêutica":["Pharmaceutical & Nutraceutical","Farmacéutica y Nutracéutica"],
+      "Formatos disponíveis":["Available formats","Formatos disponibles"],
+      "Pó":["Powder","Polvo"],
+      "Líquido":["Liquid","Líquido"],
+      "Pasta":["Paste","Pasta"],
+      "Preparação Hidrossolúvel":["Water-soluble Preparation","Preparación Hidrosoluble"],
+      "Preparação Lipossolúvel":["Fat-soluble Preparation","Preparación Liposoluble"],
+      "Soluções biotecnológicas":["Biotechnological solutions","Soluciones biotecnológicas"],
+      "Ingredientes microbiológicos e polissacarídeos funcionais para a suplementação alimentar, a nutrição funcional e a saúde animal.":["Microbiological ingredients and functional polysaccharides for food supplements, functional nutrition and animal health.","Ingredientes microbiológicos y polisacáridos funcionales para la suplementación alimentaria, la nutrición funcional y la salud animal."],
+      "Linha GB® · Bactérias vivas":["GB® line · Live bacteria","Línea GB® · Bacterias vivas"],
+      "Cultura de bactérias láticas ao microscópio":["Lactic acid bacteria culture under the microscope","Cultivo de bacterias lácticas al microscopio"],
+      "Cultura de bactérias láticas · visualização microscópica":["Lactic acid bacteria culture · microscopic view","Cultivo de bacterias lácticas · visualización microscópica"],
+      "Ingredientes microbiológicos":["Microbiological ingredients","Ingredientes microbiológicos"],
+      "Probióticos, Prebióticos e Pós-bióticos":["Probiotics, Prebiotics and Postbiotics","Probióticos, Prebióticos y Posbióticos"],
+      "Um portfólio abrangente de estirpes selecionadas — bactérias láticas, bacilos, leveduras e pós-bióticos inativados — desenvolvido para responder às exigências da saúde digestiva, imunidade e bem-estar, humano e veterinário.":["A comprehensive portfolio of selected strains — lactic acid bacteria, bacilli, yeasts and inactivated postbiotics — developed to meet the demands of digestive health, immunity and wellbeing, both human and veterinary.","Un amplio portafolio de cepas seleccionadas — bacterias lácticas, bacilos, levaduras y posbióticos inactivados — desarrollado para responder a las exigencias de la salud digestiva, la inmunidad y el bienestar, humano y veterinario."],
+      "Bactérias láticas · linha GB®":["Lactic acid bacteria · GB® line","Bacterias lácticas · línea GB®"],
+      "Bacilos & leveduras":["Bacilli & yeasts","Bacilos y levaduras"],
+      "Pós-biótico de uso oral · Neoimuno®":["Oral postbiotic · Neoimuno®","Posbiótico de uso oral · Neoimuno®"],
+      "inativado":["inactivated","inactivado"],
+      "Saúde Digestiva":["Digestive Health","Salud Digestiva"],
+      "Imunidade":["Immunity","Inmunidad"],
+      "Saúde Feminina":["Women's Health","Salud Femenina"],
+      "Nutrição Desportiva":["Sports Nutrition","Nutrición Deportiva"],
+      "Saúde Oral":["Oral Health","Salud Bucal"],
+      "Aplicações Veterinárias":["Veterinary Applications","Aplicaciones Veterinarias"],
+      "S. cerevisiae · Parede celular":["S. cerevisiae · Cell wall","S. cerevisiae · Pared celular"],
+      "Cápsula de beta-glucana e estrutura molecular (1-3)(1-6) beta-D-glucano":["Beta-glucan capsule and (1-3)(1-6) beta-D-glucan molecular structure","Cápsula de betaglucano y estructura molecular (1-3)(1-6) beta-D-glucano"],
+      "Estrutura (1→3)(1→6) β-D-Glucano":["(1→3)(1→6) β-D-Glucan structure","Estructura (1→3)(1→6) β-D-Glucano"],
+      "Ingrediente funcional":["Functional ingredient","Ingrediente funcional"],
+      "Beta-Glucana":["Beta-Glucan","Betaglucano"],
+      "Polissacarídeo natural obtido da parede celular de":["Natural polysaccharide obtained from the cell wall of","Polisacárido natural obtenido de la pared celular de"],
+      ", com estrutura (1→3)(1→6) β-D-Glucano — reconhecido pela versatilidade em formulações de suplementação, nutrição funcional e cosmética.":[", with a (1→3)(1→6) β-D-Glucan structure — recognised for its versatility in supplement, functional nutrition and cosmetic formulations.",", con estructura (1→3)(1→6) β-D-Glucano — reconocido por su versatilidad en formulaciones de suplementación, nutrición funcional y cosmética."],
+      "Benefícios tecnológicos":["Technological benefits","Beneficios tecnológicos"],
+      "Origem natural, com elevado perfil de segurança":["Natural origin with a high safety profile","Origen natural, con un alto perfil de seguridad"],
+      "Excelente versatilidade de formulação":["Excellent formulation versatility","Excelente versatilidad de formulación"],
+      "Compatível com diferentes matrizes alimentares e nutracêuticas":["Compatible with different food and nutraceutical matrices","Compatible con diferentes matrices alimentarias y nutracéuticas"],
+      "Elevada estabilidade em diferentes formatos de produto":["High stability across different product formats","Alta estabilidad en diferentes formatos de producto"],
+      "Suplementação Alimentar":["Food Supplements","Suplementación Alimentaria"],
+      "Alimentos Funcionais":["Functional Foods","Alimentos Funcionales"],
+      "Nutrição Animal":["Animal Nutrition","Nutrición Animal"],
+      "Cosmética":["Cosmetics","Cosmética"],
+      "Onde chegamos":["Where we reach","Dónde llegamos"],
+      "Aplicações por indústria":["Applications by industry","Aplicaciones por industria"],
+      "Um portfólio transversal, desenvolvido para responder às necessidades específicas de cada setor.":["A cross-sector portfolio, developed to meet the specific needs of each industry.","Un portafolio transversal, desarrollado para responder a las necesidades específicas de cada sector."],
+      "Formulações e dermocosmética":["Formulations and dermocosmetics","Formulaciones y dermocosmética"],
+      "Indústria Alimentar":["Food Industry","Industria Alimentaria"],
+      "Alimentos, bebidas e confeitaria":["Food, beverages and confectionery","Alimentos, bebidas y confitería"],
+      "Farmacêutica & Suplementos":["Pharmaceutical & Supplements","Farmacéutica y Suplementos"],
+      "Ativos e nutracêuticos":["Actives and nutraceuticals","Activos y nutracéuticos"],
+      "Nutrição e bem-estar animal":["Animal nutrition and wellbeing","Nutrición y bienestar animal"],
+      "Aromaterapia":["Aromatherapy","Aromaterapia"],
+      "Bem-estar e óleos essenciais":["Wellbeing and essential oils","Bienestar y aceites esenciales"],
+      "Desde 1966":["Since 1966","Desde 1966"],
+      "Desde 1987":["Since 1987","Desde 1987"],
+      "Única produtora brasileira de mentol natural, óleos essenciais, vegetais e manteigas.":["Brazil's only producer of natural menthol, plus essential oils, vegetable oils and butters.","Única productora brasileña de mentol natural, aceites esenciales, vegetales y mantecas."],
+      "Referência em aromas e fragrâncias personalizadas para a indústria.":["A benchmark in custom flavours and fragrances for industry.","Referencia en aromas y fragancias personalizadas para la industria."],
+      "Contacto":["Contact","Contacto"],
+      "Vamos conversar sobre o seu projeto.":["Let's talk about your project.","Hablemos de su proyecto."],
+      "Peça a ficha técnica de qualquer ingrediente do nosso portfólio ou fale diretamente com a nossa equipa técnica sobre especificações, aplicações e disponibilidade.":["Request the data sheet for any ingredient in our portfolio, or speak directly with our technical team about specifications, applications and availability.","Solicite la ficha técnica de cualquier ingrediente de nuestro portafolio o hable directamente con nuestro equipo técnico sobre especificaciones, aplicaciones y disponibilidad."],
+      "Ligar agora":["Call now","Llamar ahora"],
+      "Telefones":["Phones","Teléfonos"],
+      "Grupo Intercolor":["Intercolor Group","Grupo Intercolor"],
+      "Ingredientes que inspiram soluções. Parcerias que constroem o futuro.":["Ingredients that inspire solutions. Partnerships that build the future.","Ingredientes que inspiran soluciones. Alianzas que construyen el futuro."],
+      "Portfólio":["Portfolio","Portafolio"],
+      "Empresa":["Company","Empresa"],
+      "© 2026 YSCL Pharma Group — YSC · Intercolor":["© 2026 YSCL Pharma Group — YSC · Intercolor","© 2026 YSCL Pharma Group — YSC · Intercolor"],
+      "Portfólio Técnico 2026/2027":["Technical Portfolio 2026/2027","Portafolio Técnico 2026/2027"],
+      "Idioma":["Language","Idioma"]
+    };
+    var IDX = {en:0, es:1};
+    var nodes = [], attrs = [];
+    var walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+    for(var n; (n = walker.nextNode());){
+      var key = n.nodeValue.replace(/\s+/g,' ').trim();
+      if(T[key]) nodes.push({n:n, pt:n.nodeValue, key:key});
+    }
+    document.querySelectorAll('[alt],[aria-label]').forEach(function(el){
+      ['alt','aria-label'].forEach(function(a){
+        var v = el.getAttribute(a);
+        if(v && T[v]) attrs.push({el:el, a:a, pt:v});
+      });
+    });
+    function setLang(lang){
+      var i = IDX[lang];
+      nodes.forEach(function(o){
+        o.n.nodeValue = i == null ? o.pt : o.pt.replace(o.pt.trim(), T[o.key][i]);
+      });
+      attrs.forEach(function(o){ o.el.setAttribute(o.a, i == null ? o.pt : T[o.pt][i]); });
+      document.documentElement.lang = lang;
+      document.querySelectorAll('.lang-switch button').forEach(function(b){
+        b.setAttribute('aria-pressed', b.dataset.lang === lang ? 'true' : 'false');
+      });
+      try{ localStorage.setItem('lang', lang); }catch(e){}
+    }
+    document.querySelectorAll('.lang-switch button').forEach(function(b){
+      b.addEventListener('click', function(){ setLang(b.dataset.lang); });
+    });
+    var saved; try{ saved = localStorage.getItem('lang'); }catch(e){}
+    setLang(saved && (saved in IDX || saved === 'pt') ? saved : 'pt');
   })();
 </script>
 </body>
