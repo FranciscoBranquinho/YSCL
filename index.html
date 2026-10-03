@@ -292,6 +292,11 @@
   .bio-caption{position:absolute;left:0;right:0;bottom:0;padding:.7rem 1rem;background:linear-gradient(0deg, rgba(10,14,11,.72), transparent);color:#F4F2E6;font-family:var(--font-mono);font-size:.74rem;letter-spacing:.03em;}
   .bio-text h3{font-size:var(--step-h3);}
   .bio-text .lead{margin-top:.9rem;color:var(--color-text-muted);font-size:var(--step-lead);}
+  .strain-toggle{background:none;border:1px solid transparent;color:var(--color-brand);font:inherit;font-weight:600;font-size:.9rem;}
+  .strain-toggle:hover{border-color:var(--color-border);}
+  .strain-toggle svg{width:16px;height:16px;transition:transform .2s ease;}
+  .strain-toggle[aria-expanded="true"] svg{transform:rotate(180deg);}
+  .strain-panel[hidden]{display:none;}
   .strain-panel{
     grid-column:1/-1;display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem clamp(1.5rem,3vw,2.5rem);
     background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius);padding:clamp(1.4rem,3vw,2rem);
@@ -580,9 +585,9 @@
               <span class="chip">Nutrição Desportiva</span><span class="chip">Saúde Oral</span><span class="chip">Aplicações Veterinárias</span>
             </div>
           </div>
-          <div class="product-cta"><a class="btn btn-outline" href="mailto:ysclpharma@ysclpharma.com?subject=Pedido%20de%20ficha%20t%C3%A9cnica%20%E2%80%94%20Probi%C3%B3ticos%2C%20Prebi%C3%B3ticos%20e%20P%C3%B3s-bi%C3%B3ticos">Pedir ficha técnica</a></div>
+          <div class="product-cta"><a class="btn btn-outline" href="mailto:ysclpharma@ysclpharma.com?subject=Pedido%20de%20ficha%20t%C3%A9cnica%20%E2%80%94%20Probi%C3%B3ticos%2C%20Prebi%C3%B3ticos%20e%20P%C3%B3s-bi%C3%B3ticos">Pedir ficha técnica</a><button type="button" class="btn strain-toggle" aria-expanded="false" aria-controls="strain-panel">Ver estirpes disponíveis<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button></div>
         </div>
-        <div class="strain-panel">
+        <div class="strain-panel" id="strain-panel" hidden>
           <div class="strain-group">
             <h4>Bactérias láticas · linha GB®</h4>
             <ul class="strain-list">
@@ -762,6 +767,12 @@
         btn.setAttribute('aria-expanded','false');
       });
     });
+    var st = document.querySelector('.strain-toggle'), sp = document.getElementById('strain-panel');
+    if(st && sp) st.addEventListener('click', function(){
+      var open = sp.hidden;
+      sp.hidden = !open;
+      st.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
   })();
 </script>
 <script>
@@ -845,6 +856,7 @@
       "Bactérias láticas · linha GB®":["Lactic acid bacteria · GB® line","Bacterias lácticas · línea GB®"],
       "Bacilos & leveduras":["Bacilli & yeasts","Bacilos y levaduras"],
       "Pós-bióticos inativados · Neoimuno®":["Inactivated postbiotics · Neoimuno®","Posbióticos inactivados · Neoimuno®"],
+      "Ver estirpes disponíveis":["View available strains","Ver cepas disponibles"],
       "Áreas de aplicação":["Application areas","Áreas de aplicación"],
       "Saúde Digestiva":["Digestive Health","Salud Digestiva"],
       "Imunidade":["Immunity","Inmunidad"],
