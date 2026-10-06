@@ -14,7 +14,7 @@
 <meta property="og:url" content="https://ysclpharma.com/">
 <meta property="og:image" content="https://ysclpharma.com/img/og.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,400..600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="fonts/fonts.css">
 <style>
   /* ============ TOKENS ============ */
   :root{
@@ -222,7 +222,6 @@
     .hero-badge{justify-self:start;max-width:340px;}
     .timeline{grid-template-columns:1fr 1fr;}
   }
-  @media (max-width:520px){.timeline{grid-template-columns:1fr;}}
 
   /* ============ SOBRE ============ */
   .about-grid{display:grid;grid-template-columns:1.2fr .9fr;gap:clamp(2.5rem,5vw,4rem);align-items:start;}
@@ -259,8 +258,8 @@
     font-family:var(--font-mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;
     padding:.32rem .6rem;border-radius:6px;
   }
-  .product-body{padding:clamp(1.6rem,3vw,2.4rem);display:flex;flex-direction:column;}
-  .product-body .product-cta{margin-top:auto;padding-top:1.6rem;}
+  .product-body{padding:clamp(1.6rem,3vw,2.4rem);display:flex;flex-direction:column;justify-content:center;}
+  .product-body .product-cta{padding-top:.2rem;}
   .product-body h3{font-size:var(--step-h3);}
   .product-body h3 em{color:var(--color-emph);font-style:italic;font-weight:500;font-size:.72em;display:block;margin-top:.15rem;}
   .product-body .lead{margin-top:.8rem;color:var(--color-text-muted);font-size:.96rem;}
@@ -329,7 +328,11 @@
   .industry-label h3{font-size:.98rem;}
   .industry-label p{margin-top:.3rem;font-size:.8rem;color:var(--color-text-muted);}
   @media (max-width:900px){.industry-grid{grid-template-columns:repeat(3,1fr);}}
-  @media (max-width:560px){.industry-grid{grid-template-columns:repeat(2,1fr);}}
+  @media (max-width:560px){
+    .industry-grid{grid-template-columns:repeat(2,1fr);}
+    .industry-card:last-child:nth-child(odd){grid-column:1/-1;}
+    .industry-card:last-child:nth-child(odd) .industry-media{aspect-ratio:16/9;}
+  }
 
   /* ============ GRUPO ============ */
   .group-strip{
@@ -341,7 +344,7 @@
   .group-co .yr{font-family:var(--font-mono);font-size:.78rem;letter-spacing:.08em;opacity:.75;}
   .group-co h3{font-family:var(--font-display);font-size:1.5rem;margin-top:.3rem;color:inherit;}
   .group-co p{margin-top:.4rem;font-size:.85rem;opacity:.85;max-width:24ch;margin-inline:auto;}
-  .group-plus{font-family:var(--font-display);font-size:1.8rem;opacity:.6;text-align:center;align-self:center;}
+  .group-plus{font-family:var(--font-display);font-size:2.6rem;font-weight:300;line-height:1;opacity:.9;text-align:center;align-self:center;}
   @media (max-width:700px){
     .group-strip{grid-template-columns:1fr;}
     .group-plus{transform:rotate(90deg);}
@@ -360,7 +363,23 @@
   .contact-list .item{display:flex;gap:.9rem;align-items:flex-start;}
   .contact-list .item svg{width:20px;height:20px;flex-shrink:0;color:var(--color-brand);margin-top:.15rem;}
   .contact-list .item .lbl{font-family:var(--font-mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;color:var(--color-text-muted);}
-  .contact-list .item a{text-decoration:none;font-weight:600;}
+  .contact-list .item a{display:inline-block;padding-block:.2rem;text-decoration:none;font-weight:600;}
+  .email-row{display:inline-flex;align-items:center;flex-wrap:wrap;}
+  @media (max-width:520px){.contact-panel{padding:1.4rem;}}
+  .toggle-count{font-weight:500;opacity:.75;margin-left:.3rem;}
+  .mail-dialog{max-width:min(520px,calc(100vw - 2rem));width:100%;border:1px solid var(--color-border);border-radius:var(--radius);
+    padding:clamp(1.4rem,4vw,2rem);background:var(--color-surface);color:var(--color-text);box-shadow:var(--shadow-card);}
+  .mail-dialog::backdrop{background:rgba(10,14,11,.55);}
+  .mail-dialog h2{font-size:var(--step-h4);padding-right:2rem;}
+  .mail-intro{margin-top:.6rem;font-size:.92rem;color:var(--color-text-muted);}
+  .mail-row{display:flex;align-items:center;margin-top:1.1rem;font-weight:600;}
+  .mail-dialog label{display:block;margin-top:1.1rem;margin-bottom:.4rem;font-family:var(--font-mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--color-text-muted);}
+  .mail-dialog textarea{width:100%;resize:vertical;font:inherit;font-size:.88rem;padding:.7rem;border:1px solid var(--color-border);border-radius:var(--radius-sm);background:var(--color-surface-2);color:var(--color-text);}
+  .mail-actions{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.1rem;}
+  .mail-actions .btn{font-size:.85rem;padding:.55rem 1rem;}
+  #mail-copy-text.copied::after{content:" ✓";}
+  .mail-close{position:absolute;top:.8rem;right:.8rem;width:36px;height:36px;border:0;background:none;font-size:1.6rem;line-height:1;cursor:pointer;color:var(--color-text-muted);}
+  .mail-close:hover{color:var(--color-text);}
   .contact-list .item a:hover{color:var(--color-brand);}
   .copy-btn{display:inline-grid;place-items:center;vertical-align:middle;margin-left:.45rem;width:28px;height:28px;padding:0;
     background:none;border:1px solid var(--color-border);border-radius:6px;cursor:pointer;color:var(--color-text-muted);}
@@ -385,7 +404,7 @@
   .lang-bar{border-bottom:1px solid var(--color-border);}
   .lang-switch{display:flex;justify-content:flex-end;gap:.4rem;padding-block:.35rem;}
   .lang-switch button{
-    display:inline-flex;align-items:center;gap:.35rem;padding:.2rem .45rem;border-radius:6px;
+    display:inline-flex;align-items:center;gap:.35rem;padding:.4rem .55rem;border-radius:6px;
     background:none;border:1px solid transparent;cursor:pointer;
     font-family:var(--font-mono);font-size:.72rem;font-weight:600;color:var(--color-text-muted);
   }
@@ -487,7 +506,7 @@
       <article class="product">
         <div class="product-media"><span class="product-tag">YSC · desde 1966</span><img src="img/menta.jpg" loading="lazy" decoding="async" alt="Folhas de Menta Arvensis, matéria-prima do mentol natural"></div>
         <div class="product-body">
-          <h3>Mentol Natural<em>Menta Arvensis</em></h3>
+          <h3>Mentol Natural<em>Mentha arvensis</em></h3>
           <p class="lead">A YSC, empresa do grupo, é a única produtora brasileira de mentol natural — um ingrediente de elevada pureza, origem rastreável e qualidade consistente, reconhecido pelas propriedades refrescantes, analgésicas e antisséticas.</p>
           <div class="spec-block">
             <h4>Apresentações disponíveis</h4>
@@ -509,24 +528,24 @@
               <li>Perfumaria funcional e misturas aromáticas</li>
             </ul>
           </div>
-          <div class="product-cta"><a data-product="Mentol Natural" class="btn btn-outline" href="mailto:ysclpharma@ysclpharma.com?subject=Pedido%20de%20ficha%20t%C3%A9cnica%20%E2%80%94%20Mentol%20Natural">Pedir ficha técnica</a><button type="button" class="btn strain-toggle" aria-expanded="false" aria-controls="panel-mentol">Ver lista completa<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button></div>
+          <div class="product-cta"><a data-product="Mentol Natural" class="btn btn-outline" href="mailto:ysclpharma@ysclpharma.com?subject=Pedido%20de%20ficha%20t%C3%A9cnica%20%E2%80%94%20Mentol%20Natural">Pedir ficha técnica</a><button type="button" class="btn strain-toggle" aria-expanded="false" aria-controls="panel-mentol">Ver lista completa<span class="toggle-count">(9)</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button></div>
         </div>
         <div class="strain-panel" id="panel-mentol" hidden>
           <div class="strain-group">
             <h4>Mentol natural</h4>
             <ul class="strain-list">
-                <li>Cristalizado</li>
-                <li>Em pó</li>
+                <li>Mentol Cristalizado Natural</li>
+                <li>Mentol Natural em Pó</li>
             </ul>
           </div>
           <div class="strain-group">
             <h4>Óleos de menta</h4>
             <ul class="strain-list">
-                <li>Arvensis tri-retificado</li>
-                <li>Arvensis desmentolado</li>
-                <li>Arvensis bruto</li>
-                <li>Piperita</li>
-                <li>Spearmint</li>
+                <li>Óleo Tri-retificado</li>
+                <li>Óleo Desmentolado</li>
+                <li>Óleo Bruto</li>
+                <li>Óleo de Menta Piperita</li>
+                <li>Óleo de Spearmint</li>
             </ul>
           </div>
           <div class="strain-group">
@@ -572,7 +591,7 @@
               <li>Aromaterapia, sabonetes e higiene pessoal</li>
             </ul>
           </div>
-          <div class="product-cta"><a data-product="Óleos &amp; Manteigas Naturais" class="btn btn-outline" href="mailto:ysclpharma@ysclpharma.com?subject=Pedido%20de%20ficha%20t%C3%A9cnica%20%E2%80%94%20%C3%93leos%20%26%20Manteigas%20Naturais">Pedir ficha técnica</a><button type="button" class="btn strain-toggle" aria-expanded="false" aria-controls="panel-oleos">Ver lista completa<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button></div>
+          <div class="product-cta"><a data-product="Óleos &amp; Manteigas Naturais" class="btn btn-outline" href="mailto:ysclpharma@ysclpharma.com?subject=Pedido%20de%20ficha%20t%C3%A9cnica%20%E2%80%94%20%C3%93leos%20%26%20Manteigas%20Naturais">Pedir ficha técnica</a><button type="button" class="btn strain-toggle" aria-expanded="false" aria-controls="panel-oleos">Ver lista completa<span class="toggle-count">(28)</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button></div>
         </div>
         <div class="strain-panel" id="panel-oleos" hidden>
           <div class="strain-group">
@@ -671,7 +690,7 @@
               <span class="chip">Nutrição Desportiva</span><span class="chip">Saúde Oral</span><span class="chip">Aplicações Veterinárias</span>
             </div>
           </div>
-          <div class="product-cta"><a data-product="Probióticos, Prebióticos e Pós-bióticos" class="btn btn-outline" href="mailto:ysclpharma@ysclpharma.com?subject=Pedido%20de%20ficha%20t%C3%A9cnica%20%E2%80%94%20Probi%C3%B3ticos%2C%20Prebi%C3%B3ticos%20e%20P%C3%B3s-bi%C3%B3ticos">Pedir ficha técnica</a><button type="button" class="btn strain-toggle" aria-expanded="false" aria-controls="strain-panel">Ver estirpes disponíveis<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button></div>
+          <div class="product-cta"><a data-product="Probióticos, Prebióticos e Pós-bióticos" class="btn btn-outline" href="mailto:ysclpharma@ysclpharma.com?subject=Pedido%20de%20ficha%20t%C3%A9cnica%20%E2%80%94%20Probi%C3%B3ticos%2C%20Prebi%C3%B3ticos%20e%20P%C3%B3s-bi%C3%B3ticos">Pedir ficha técnica</a><button type="button" class="btn strain-toggle" aria-expanded="false" aria-controls="strain-panel">Ver estirpes disponíveis<span class="toggle-count">(37)</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button></div>
         </div>
         <div class="strain-panel" id="strain-panel" hidden>
           <div class="strain-group">
@@ -686,7 +705,7 @@
                 <li><b>CAS GB®</b><i>Lacticaseibacillus casei</i></li>
                 <li><b>GASS GB®</b><i>Lactobacillus gasseri</i></li>
                 <li><b>PARA GB®</b><i>Lacticaseibacillus paracasei</i></li>
-                <li><b>REUT GB</b><i>Limosilactobacillus reuteri</i></li>
+                <li><b>REUT GB®</b><i>Limosilactobacillus reuteri</i></li>
                 <li><b>RHAM GB®</b><i>Lacticaseibacillus rhamnosus</i></li>
                 <li><b>SALI GB®</b><i>Ligilactobacillus salivarius</i></li>
                 <li><b>HILUS GB®</b><i>Streptococcus thermophilus</i></li>
@@ -708,7 +727,7 @@
                 <li><b>COAG GB®</b><i>Bacillus coagulans</i></li>
                 <li><b>BOUL GB®</b><i>Saccharomyces boulardii</i></li>
                 <li><b>VISIE GB®</b><i>Saccharomyces cerevisiae</i></li>
-                <li><b>—</b><i>Bacillus spizizenii</i></li>
+                <li><b>Sob consulta</b><i>Bacillus spizizenii</i></li>
             </ul>
           </div>
           <div class="strain-group">
@@ -810,7 +829,7 @@
         <div class="contact-list">
           <div class="item">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
-            <div><span class="lbl">Email</span><br><a href="mailto:ysclpharma@ysclpharma.com">ysclpharma@ysclpharma.com</a><button type="button" class="copy-btn" data-copy="ysclpharma@ysclpharma.com" aria-label="Copiar email"><svg class="cp" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><svg class="ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg></button></div>
+            <div><span class="lbl">Email</span><br><span class="email-row"><a href="mailto:ysclpharma@ysclpharma.com">ysclpharma@ysclpharma.com</a><button type="button" class="copy-btn" data-copy="ysclpharma@ysclpharma.com" aria-label="Copiar email"><svg class="cp" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><svg class="ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg></button></span></div>
           </div>
           <div class="item">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.5 2.1L8 9.7a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.7 2.1z"/></svg>
@@ -853,281 +872,22 @@
   <div class="wrap footer-bottom">
     <span>© 2026 YSCL Pharma Group — YSC · Intercolor</span>
     <span>CardinalChoice Unipessoal, Lda. · NIPC 518836843</span>
-    <span>Portfólio Técnico 2026/2027</span>
   </div>
 </footer>
 
-<script>
-  (function(){
-    var btn = document.getElementById('nav-toggle-btn');
-    var panel = document.querySelector('.menu-panel');
-    if(!btn || !panel) return;
-    var header = document.querySelector('header');
-    function setHH(){ document.documentElement.style.setProperty('--header-h', header.offsetHeight + 'px'); }
-    setHH(); addEventListener('resize', setHH);
-    btn.addEventListener('click', function(){
-      var open = panel.classList.toggle('nav-open');
-      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-    });
-    document.querySelectorAll('#site-menu a').forEach(function(a){
-      a.addEventListener('click', function(){
-        panel.classList.remove('nav-open');
-        btn.setAttribute('aria-expanded','false');
-      });
-    });
-    document.querySelectorAll('.strain-toggle').forEach(function(st){
-      var sp = document.getElementById(st.getAttribute('aria-controls'));
-      st.addEventListener('click', function(){
-        var open = sp.hidden;
-        sp.hidden = !open;
-        st.setAttribute('aria-expanded', open ? 'true' : 'false');
-      });
-    });
-  })();
-</script>
-<script>
-  /* ============ I18N ============ */
-  // Texto PT original é a chave; [EN, ES]. Textos sem entrada (marcas, estirpes, números) ficam iguais.
-  (function(){
-    var T = {
-      "Sobre nós":["About us","Sobre nosotros"],
-      "Matérias-Primas":["Raw Materials","Materias Primas"],
-      "Biotecnologia":["Biotechnology","Biotecnología"],
-      "Aplicações":["Applications","Aplicaciones"],
-      "Grupo":["Group","Grupo"],
-      "Pedir Ficha Técnica":["Request Data Sheet","Solicitar Ficha Técnica"],
-      "Pedir ficha técnica":["Request data sheet","Solicitar ficha técnica"],
-      "Abrir menu":["Open menu","Abrir menú"],
-      "Grupo YSCL Pharma — Matérias-Primas · Aromas · Biotecnologia":["YSCL Pharma Group — Raw Materials · Flavours · Biotechnology","Grupo YSCL Pharma — Materias Primas · Aromas · Biotecnología"],
-      "Da origem":["From source","Del origen"],
-      "à fórmula.":["to formula.","a la fórmula."],
-      "Ver matérias-primas":["View raw materials","Ver materias primas"],
-      "Fundação da YSC — única produtora brasileira de mentol natural.":["YSC is founded — Brazil's only producer of natural menthol.","Fundación de YSC — única productora brasileña de mentol natural."],
-      "Fundação da Intercolor — referência em aromas e fragrâncias.":["Intercolor is founded — a benchmark in flavours and fragrances.","Fundación de Intercolor — referencia en aromas y fragancias."],
-      "União estratégica das duas empresas dá origem à YSCL Pharma.":["The strategic union of both companies gives rise to YSCL Pharma.","La unión estratégica de ambas empresas da origen a YSCL Pharma."],
-      "Natureza, ciência e inovação que geram valor.":["Nature, science and innovation that create value.","Naturaleza, ciencia e innovación que generan valor."],
-      "A YSCL Pharma resulta da união estratégica de duas empresas de referência no mercado brasileiro: a Intercolor, fundada em 1987 e reconhecida pela excelência no desenvolvimento de aromas e fragrâncias, e a YSC, única produtora de mentol natural do Brasil desde 1966. Concretizada em 2024, esta integração consolidou décadas de conhecimento técnico, inovação e experiência industrial num grupo sólido e altamente especializado.":["YSCL Pharma is the result of the strategic union of two leading companies in the Brazilian market: Intercolor, founded in 1987 and recognised for excellence in developing flavours and fragrances, and YSC, Brazil's only producer of natural menthol since 1966. Completed in 2024, this integration brought together decades of technical know-how, innovation and industrial experience into a solid, highly specialised group.","YSCL Pharma es el resultado de la unión estratégica de dos empresas de referencia en el mercado brasileño: Intercolor, fundada en 1987 y reconocida por su excelencia en el desarrollo de aromas y fragancias, y YSC, única productora de mentol natural de Brasil desde 1966. Concretada en 2024, esta integración consolidó décadas de conocimiento técnico, innovación y experiencia industrial en un grupo sólido y altamente especializado."],
-      "Com forte aposta em investigação, desenvolvimento e qualidade, expandimos a nossa atuação para uma linha própria de cosméticos, mantendo a comercialização de matérias-primas de elevada qualidade — aromas, fragrâncias, óleos essenciais e mentol cristal natural.":["With a strong commitment to research, development and quality, we have expanded into our own cosmetics line, while continuing to supply high-quality raw materials — flavours, fragrances, essential oils and natural crystal menthol.","Con una fuerte apuesta por la investigación, el desarrollo y la calidad, ampliamos nuestra actividad a una línea propia de cosméticos, manteniendo la comercialización de materias primas de alta calidad — aromas, fragancias, aceites esenciales y mentol cristal natural."],
-      "Em parceria estratégica com a Gabbia e a BioSyn, ampliámos o portfólio de matérias-primas especializadas, disponibilizando probióticos, prebióticos, pós-bióticos e beta-glucana para as indústrias alimentar e de suplementação humana e veterinária.":["In strategic partnership with Gabbia and BioSyn, we have broadened our portfolio of specialised raw materials, offering probiotics, prebiotics, postbiotics and beta-glucan to the food and the human and veterinary supplement industries.","En alianza estratégica con Gabbia y BioSyn, ampliamos el portafolio de materias primas especializadas, ofreciendo probióticos, prebióticos, posbióticos y betaglucano para las industrias alimentaria y de suplementación humana y veterinaria."],
-      "Inovação":["Innovation","Innovación"],
-      "Parceria":["Partnership","Colaboración"],
-      "Apresentação de produtos":["Product overview","Presentación de productos"],
-      "Da Menta Arvensis à Floresta Amazónica: ingredientes de origem natural, com rastreabilidade completa, para as indústrias farmacêutica, cosmética e nutracêutica.":["From Mentha arvensis to the Amazon Rainforest: natural ingredients with full traceability for the pharmaceutical, cosmetic and nutraceutical industries.","De la Menta Arvensis a la Selva Amazónica: ingredientes de origen natural, con trazabilidad completa, para las industrias farmacéutica, cosmética y nutracéutica."],
-      "YSC · desde 1966":["YSC · since 1966","YSC · desde 1966"],
-      "Folhas de Menta Arvensis, matéria-prima do mentol natural":["Mentha arvensis leaves, the raw material for natural menthol","Hojas de Menta Arvensis, materia prima del mentol natural"],
-      "Mentol Natural":["Natural Menthol","Mentol Natural"],
-      "A YSC, empresa do grupo, é a única produtora brasileira de mentol natural — um ingrediente de elevada pureza, origem rastreável e qualidade consistente, reconhecido pelas propriedades refrescantes, analgésicas e antisséticas.":["YSC, a group company, is Brazil's only producer of natural menthol — a high-purity ingredient with traceable origin and consistent quality, known for its cooling, analgesic and antiseptic properties.","YSC, empresa del grupo, es la única productora brasileña de mentol natural — un ingrediente de alta pureza, origen trazable y calidad constante, reconocido por sus propiedades refrescantes, analgésicas y antisépticas."],
-      "Apresentações disponíveis":["Available forms","Presentaciones disponibles"],
-      "Mentol Cristalizado Natural":["Natural Crystallised Menthol","Mentol Cristalizado Natural"],
-      "Mentol Natural em Pó":["Natural Menthol Powder","Mentol Natural en Polvo"],
-      "Óleo Tri-retificado":["Triple-rectified Oil","Aceite Trirrectificado"],
-      "Óleo Desmentolado":["Dementholised Oil","Aceite Desmentolado"],
-      "Óleo Bruto":["Crude Oil","Aceite Bruto"],
-      "Óleo de Menta Piperita":["Peppermint Oil","Aceite de Menta Piperita"],
-      "Óleo de Spearmint":["Spearmint Oil","Aceite de Hierbabuena"],
-      "Ativos refrescantes e analgésicos para OTC, higiene oral e dermocosmética":["Cooling and analgesic actives for OTC, oral care and dermocosmetics","Activos refrescantes y analgésicos para OTC, higiene bucal y dermocosmética"],
-      "Base industrial para extração de mentol e formulações farmacêuticas/cosméticas":["Industrial base for menthol extraction and pharmaceutical/cosmetic formulations","Base industrial para la extracción de mentol y formulaciones farmacéuticas/cosméticas"],
-      "Perfumaria funcional e misturas aromáticas":["Functional perfumery and aromatic blends","Perfumería funcional y mezclas aromáticas"],
-      "YSC · Amazónia & Cerrado":["YSC · Amazon & Cerrado","YSC · Amazonía y Cerrado"],
-      "Óleos essenciais, óleos vegetais e manteigas naturais":["Essential oils, vegetable oils and natural butters","Aceites esenciales, aceites vegetales y mantecas naturales"],
-      "Óleos & Manteigas Naturais":["Natural Oils & Butters","Aceites y Mantecas Naturales"],
-      "Óleos essenciais, óleos vegetais e manteigas de elevada pureza, provenientes de matérias-primas selecionadas na Floresta Amazónica e na Região do Cerrado, extraídas com processos que preservam a integridade dos compostos naturais.":["High-purity essential oils, vegetable oils and butters, sourced from raw materials selected in the Amazon Rainforest and the Cerrado region, extracted with processes that preserve the integrity of natural compounds.","Aceites esenciales, aceites vegetales y mantecas de alta pureza, procedentes de materias primas seleccionadas en la Selva Amazónica y en la región del Cerrado, extraídas con procesos que preservan la integridad de los compuestos naturales."],
-      "Óleos essenciais & vegetais":["Essential & vegetable oils","Aceites esenciales y vegetales"],
-      "Laranja Doce & Amarga":["Sweet & Bitter Orange","Naranja Dulce y Amarga"],
-      "Limão Siciliano":["Sicilian Lemon","Limón Siciliano"],
-      "Eucalipto Globulus":["Eucalyptus Globulus","Eucalipto Globulus"],
-      "Cravo-da-Índia":["Clove","Clavo"],
-      "Manteigas naturais":["Natural butters","Mantecas naturales"],
-      "Produtos farmacêuticos e fitoterapêuticos":["Pharmaceutical and herbal products","Productos farmacéuticos y fitoterápicos"],
-      "Cosmética, dermocosmética e cuidados capilares":["Cosmetics, dermocosmetics and hair care","Cosmética, dermocosmética y cuidado capilar"],
-      "Aromaterapia, sabonetes e higiene pessoal":["Aromatherapy, soaps and personal care","Aromaterapia, jabones e higiene personal"],
-      "Intercolor · desde 1987":["Intercolor · since 1987","Intercolor · desde 1987"],
-      "Frascos de aromas com laranja, limão, baunilha, chocolate e caramelo":["Flavour bottles with orange, lemon, vanilla, chocolate and caramel","Frascos de aromas con naranja, limón, vainilla, chocolate y caramelo"],
-      "Aromas Personalizados":["Custom Flavours","Aromas Personalizados"],
-      "Na Intercolor desenvolvemos aromas à medida para cada cliente, mercado e aplicação — pela reprodução fiel de um perfil sensorial de referência ou pela criação de soluções exclusivas, alinhadas ao posicionamento de cada produto.":["At Intercolor we develop tailor-made flavours for each customer, market and application — by faithfully reproducing a reference sensory profile or by creating exclusive solutions aligned with each product's positioning.","En Intercolor desarrollamos aromas a medida para cada cliente, mercado y aplicación — mediante la reproducción fiel de un perfil sensorial de referencia o la creación de soluciones exclusivas, alineadas con el posicionamiento de cada producto."],
-      "Indústrias servidas":["Industries served","Industrias atendidas"],
-      "Alimentar":["Food","Alimentaria"],
-      "Bebidas":["Beverages","Bebidas"],
-      "Farmacêutica & Nutracêutica":["Pharmaceutical & Nutraceutical","Farmacéutica y Nutracéutica"],
-      "Formatos disponíveis":["Available formats","Formatos disponibles"],
-      "Pó":["Powder","Polvo"],
-      "Líquido":["Liquid","Líquido"],
-      "Pasta":["Paste","Pasta"],
-      "Preparação Hidrossolúvel":["Water-soluble Preparation","Preparación Hidrosoluble"],
-      "Preparação Lipossolúvel":["Fat-soluble Preparation","Preparación Liposoluble"],
-      "Soluções biotecnológicas":["Biotechnological solutions","Soluciones biotecnológicas"],
-      "Ingredientes microbiológicos e polissacarídeos funcionais para a suplementação alimentar, a nutrição funcional e a saúde animal.":["Microbiological ingredients and functional polysaccharides for food supplements, functional nutrition and animal health.","Ingredientes microbiológicos y polisacáridos funcionales para la suplementación alimentaria, la nutrición funcional y la salud animal."],
-      "Linha GB® · Bactérias vivas":["GB® line · Live bacteria","Línea GB® · Bacterias vivas"],
-      "Cultura de bactérias láticas ao microscópio":["Lactic acid bacteria culture under the microscope","Cultivo de bacterias lácticas al microscopio"],
-      "Cultura de bactérias láticas · visualização microscópica":["Lactic acid bacteria culture · microscopic view","Cultivo de bacterias lácticas · visualización microscópica"],
-      "Ingredientes microbiológicos":["Microbiological ingredients","Ingredientes microbiológicos"],
-      "Probióticos, Prebióticos e Pós-bióticos":["Probiotics, Prebiotics and Postbiotics","Probióticos, Prebióticos y Posbióticos"],
-      "Um portfólio abrangente de estirpes selecionadas — bactérias láticas, bacilos, leveduras e pós-bióticos inativados — desenvolvido para responder às exigências da saúde digestiva, imunidade e bem-estar, humano e veterinário.":["A comprehensive portfolio of selected strains — lactic acid bacteria, bacilli, yeasts and inactivated postbiotics — developed to meet the demands of digestive health, immunity and wellbeing, both human and veterinary.","Un amplio portafolio de cepas seleccionadas — bacterias lácticas, bacilos, levaduras y posbióticos inactivados — desarrollado para responder a las exigencias de la salud digestiva, la inmunidad y el bienestar, humano y veterinario."],
-      "Bactérias láticas · linha GB®":["Lactic acid bacteria · GB® line","Bacterias lácticas · línea GB®"],
-      "Bacilos & leveduras":["Bacilli & yeasts","Bacilos y levaduras"],
-      "Pós-bióticos inativados · Neoimuno®":["Inactivated postbiotics · Neoimuno®","Posbióticos inactivados · Neoimuno®"],
-      "Ver estirpes disponíveis":["View available strains","Ver cepas disponibles"],
-      "Áreas de aplicação":["Application areas","Áreas de aplicación"],
-      "Saúde Digestiva":["Digestive Health","Salud Digestiva"],
-      "Imunidade":["Immunity","Inmunidad"],
-      "Saúde Feminina":["Women's Health","Salud Femenina"],
-      "Nutrição Desportiva":["Sports Nutrition","Nutrición Deportiva"],
-      "Saúde Oral":["Oral Health","Salud Bucal"],
-      "Aplicações Veterinárias":["Veterinary Applications","Aplicaciones Veterinarias"],
-      "S. cerevisiae · Parede celular":["S. cerevisiae · Cell wall","S. cerevisiae · Pared celular"],
-      "Ilustração de uma partícula de beta-glucana":["Illustration of a beta-glucan particle","Ilustración de una partícula de betaglucano"],
-      "Estrutura (1→3)(1→6) β-D-Glucano":["(1→3)(1→6) β-D-Glucan structure","Estructura (1→3)(1→6) β-D-Glucano"],
-      "Ingrediente funcional":["Functional ingredient","Ingrediente funcional"],
-      "Beta-Glucana":["Beta-Glucan","Betaglucano"],
-      "Polissacarídeo natural obtido da parede celular de":["Natural polysaccharide obtained from the cell wall of","Polisacárido natural obtenido de la pared celular de"],
-      ", com estrutura (1→3)(1→6) β-D-Glucano — reconhecido pela versatilidade em formulações de suplementação, nutrição funcional e cosmética.":[", with a (1→3)(1→6) β-D-Glucan structure — recognised for its versatility in supplement, functional nutrition and cosmetic formulations.",", con estructura (1→3)(1→6) β-D-Glucano — reconocido por su versatilidad en formulaciones de suplementación, nutrición funcional y cosmética."],
-      "Benefícios tecnológicos":["Technological benefits","Beneficios tecnológicos"],
-      "Origem natural, com elevado perfil de segurança":["Natural origin with a high safety profile","Origen natural, con un alto perfil de seguridad"],
-      "Excelente versatilidade de formulação":["Excellent formulation versatility","Excelente versatilidad de formulación"],
-      "Compatível com diferentes matrizes alimentares e nutracêuticas":["Compatible with different food and nutraceutical matrices","Compatible con diferentes matrices alimentarias y nutracéuticas"],
-      "Elevada estabilidade em diferentes formatos de produto":["High stability across different product formats","Alta estabilidad en diferentes formatos de producto"],
-      "Suplementação Alimentar":["Food Supplements","Suplementación Alimentaria"],
-      "Alimentos Funcionais":["Functional Foods","Alimentos Funcionales"],
-      "Nutrição Animal":["Animal Nutrition","Nutrición Animal"],
-      "Cosmética":["Cosmetics","Cosmética"],
-      "Onde chegamos":["Where we reach","Dónde llegamos"],
-      "Aplicações por indústria":["Applications by industry","Aplicaciones por industria"],
-      "Um portfólio transversal, desenvolvido para responder às necessidades específicas de cada setor.":["A cross-sector portfolio, developed to meet the specific needs of each industry.","Un portafolio transversal, desarrollado para responder a las necesidades específicas de cada sector."],
-      "Formulações e dermocosmética":["Formulations and dermocosmetics","Formulaciones y dermocosmética"],
-      "Indústria Alimentar":["Food Industry","Industria Alimentaria"],
-      "Alimentos, bebidas e confeitaria":["Food, beverages and confectionery","Alimentos, bebidas y confitería"],
-      "Farmacêutica & Suplementos":["Pharmaceutical & Supplements","Farmacéutica y Suplementos"],
-      "Ativos e nutracêuticos":["Actives and nutraceuticals","Activos y nutracéuticos"],
-      "Nutrição e bem-estar animal":["Animal nutrition and wellbeing","Nutrición y bienestar animal"],
-      "Aromaterapia":["Aromatherapy","Aromaterapia"],
-      "Bem-estar e óleos essenciais":["Wellbeing and essential oils","Bienestar y aceites esenciales"],
-      "Desde 1966":["Since 1966","Desde 1966"],
-      "Desde 1987":["Since 1987","Desde 1987"],
-      "Única produtora brasileira de mentol natural. Produz também óleos essenciais, óleos vegetais e manteigas naturais.":["Brazil's only producer of natural menthol. It also produces essential oils, vegetable oils and natural butters.","Única productora brasileña de mentol natural. También produce aceites esenciales, aceites vegetales y mantecas naturales."],
-      "Referência em aromas e fragrâncias personalizadas para a indústria.":["A benchmark in custom flavours and fragrances for industry.","Referencia en aromas y fragancias personalizadas para la industria."],
-      "Contacto":["Contact","Contacto"],
-      "Vamos conversar sobre o seu projeto.":["Let's talk about your project.","Hablemos de su proyecto."],
-      "Peça a ficha técnica de qualquer ingrediente do nosso portfólio ou fale diretamente com a nossa equipa técnica sobre especificações, aplicações e disponibilidade.":["Request the data sheet for any ingredient in our portfolio, or speak directly with our technical team about specifications, applications and availability.","Solicite la ficha técnica de cualquier ingrediente de nuestro portafolio o hable directamente con nuestro equipo técnico sobre especificaciones, aplicaciones y disponibilidad."],
-      "Ligar agora":["Call now","Llamar ahora"],
-      "Telefones":["Phones","Teléfonos"],
-      "Morada":["Address","Dirección"],
-      "Ingredientes que inspiram soluções. Parcerias que constroem o futuro.":["Ingredients that inspire solutions. Partnerships that build the future.","Ingredientes que inspiran soluciones. Alianzas que construyen el futuro."],
-      "Portfólio":["Portfolio","Portafolio"],
-      "Empresa":["Company","Empresa"],
-      "© 2026 YSCL Pharma Group — YSC · Intercolor":["© 2026 YSCL Pharma Group — YSC · Intercolor","© 2026 YSCL Pharma Group — YSC · Intercolor"],
-      "Portfólio Técnico 2026/2027":["Technical Portfolio 2026/2027","Portafolio Técnico 2026/2027"],
-      "Matérias-primas naturais, aromas e ingredientes biotecnológicos — com origem rastreável e controlo de qualidade em cada lote — para as indústrias farmacêutica, cosmética, alimentar e veterinária.":["Natural raw materials, flavours and biotech ingredients — with traceable origin and batch-by-batch quality control — for the pharmaceutical, cosmetic, food and veterinary industries.","Materias primas naturales, aromas e ingredientes biotecnológicos — con origen trazable y control de calidad en cada lote — para las industrias farmacéutica, cosmética, alimentaria y veterinaria."],
-      "Única produtora de mentol natural do Brasil":["Brazil's only natural menthol producer","Única productora de mentol natural de Brasil"],
-      "Mentol cristalizado, em pó e óleos de menta com origem rastreável, produzidos pela empresa do grupo.":["Crystallised and powdered menthol and mint oils with traceable origin, produced by our group company.","Mentol cristalizado, en polvo y aceites de menta con origen trazable, producidos por la empresa del grupo."],
-      "Hoje":["Today","Hoy"],
-      "Matérias-primas, aromas, fragrâncias e ativos para as indústrias farmacêutica, cosmética, alimentar e veterinária.":["Raw materials, flavours, fragrances and actives for the pharmaceutical, cosmetic, food and veterinary industries.","Materias primas, aromas, fragancias y activos para las industrias farmacéutica, cosmética, alimentaria y veterinaria."],
-      "Origem natural selecionada":["Selected natural origin","Origen natural seleccionado"],
-      "Matérias-primas obtidas de fontes naturais cuidadosamente selecionadas em todo o Brasil.":["Raw materials obtained from carefully selected natural sources across Brazil.","Materias primas obtenidas de fuentes naturales cuidadosamente seleccionadas en todo Brasil."],
-      "Extração e tecnologia":["Extraction and technology","Extracción y tecnología"],
-      "Processos de extração avançados que preservam as propriedades naturais e garantem a máxima pureza.":["Advanced extraction processes that preserve natural properties and ensure maximum purity.","Procesos de extracción avanzados que preservan las propiedades naturales y garantizan la máxima pureza."],
-      "Controlo de qualidade por lote":["Batch-by-batch quality control","Control de calidad por lote"],
-      "Ensaios físico-químicos e microbiológicos asseguram a pureza, segurança e rastreabilidade de cada lote.":["Physico-chemical and microbiological testing ensures the purity, safety and traceability of every batch.","Ensayos fisicoquímicos y microbiológicos aseguran la pureza, seguridad y trazabilidad de cada lote."],
-      "Rastreabilidade completa":["Full traceability","Trazabilidad completa"],
-      "Controlo total da origem à entrega, com transparência e conformidade.":["Full control from source to delivery, with transparency and compliance.","Control total del origen a la entrega, con transparencia y conformidad."],
-      "Inovação e biotecnologia":["Innovation and biotechnology","Innovación y biotecnología"],
-      "Desenvolvimento contínuo de soluções inovadoras, incluindo ingredientes biotecnológicos e probióticos.":["Continuous development of innovative solutions, including biotech ingredients and probiotics.","Desarrollo continuo de soluciones innovadoras, incluidos ingredientes biotecnológicos y probióticos."],
-      "O Grupo":["The Group","El Grupo"],
-      "YSCL Pharma — início":["YSCL Pharma — home","YSCL Pharma — inicio"],
-      "Copiar email":["Copy email","Copiar email"],
-      "Fichas técnicas disponíveis mediante pedido.":["Technical data sheets available on request.","Fichas técnicas disponibles bajo petición."],
-      "Ver lista completa":["View full list","Ver lista completa"],
-      "Mentol natural":["Natural menthol","Mentol natural"],
-      "Cristalizado":["Crystallised","Cristalizado"],
-      "Em pó":["Powder","En polvo"],
-      "Óleos de menta":["Mint oils","Aceites de menta"],
-      "Arvensis tri-retificado":["Arvensis, triple-rectified","Arvensis trirrectificado"],
-      "Arvensis desmentolado":["Arvensis, dementholised","Arvensis desmentolado"],
-      "Arvensis bruto":["Arvensis, crude","Arvensis bruto"],
-      "Piperita":["Peppermint","Piperita"],
-      "Derivados":["Derivatives","Derivados"],
-      "Mentona":["Menthone","Mentona"],
-      "Terpenos de Menta":["Mint Terpenes","Terpenos de Menta"],
-      "Óleos essenciais & hidrolatos":["Essential oils & hydrosols","Aceites esenciales e hidrolatos"],
-      "Laranja Amarga":["Bitter Orange","Naranja Amarga"],
-      "Laranja Doce":["Sweet Orange","Naranja Dulce"],
-      "Lima Taiti":["Tahiti Lime","Lima Tahití"],
-      "Toranja":["Grapefruit","Pomelo"],
-      "Laranja":["Orange","Naranja"],
-      "Botão de Cravo-da-Índia":["Clove Bud","Botón de Clavo"],
-      "Folha de Cravo-da-Índia":["Clove Leaf","Hoja de Clavo"],
-      "Melaleuca (Tea Tree)":["Tea Tree","Árbol de Té"],
-      "Cedro":["Cedarwood","Cedro"],
-      "Hidrolato de Cravo-da-Índia":["Clove Hydrosol","Hidrolato de Clavo"],
-      "Óleos vegetais":["Vegetable oils","Aceites vegetales"],
-      "Babaçu":["Babassu","Babasú"],
-      "Castanha-do-Brasil":["Brazil Nut","Nuez de Brasil"],
-      "Maracujá":["Passion Fruit","Maracuyá"],
-      "Urucum":["Annatto","Achiote"],
-      "Manteigas":["Butters","Mantecas"],
-      "Idioma":["Language","Idioma"]
-    };
-    var IDX = {en:0, es:1};
-    var nodes = [], attrs = [];
-    var walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
-    for(var n; (n = walker.nextNode());){
-      var key = n.nodeValue.replace(/\s+/g,' ').trim();
-      if(T[key]) nodes.push({n:n, pt:n.nodeValue, key:key});
-    }
-    document.querySelectorAll('[alt],[aria-label]').forEach(function(el){
-      ['alt','aria-label'].forEach(function(a){
-        var v = el.getAttribute(a);
-        if(v && T[v]) attrs.push({el:el, a:a, pt:v});
-      });
-    });
-    var MAIL = {
-      pt:['Pedido de ficha técnica','Empresa:\nPaís:\nProduto / aplicação:\nVolume anual estimado:\n'],
-      en:['Data sheet request','Company:\nCountry:\nProduct / application:\nEstimated annual volume:\n'],
-      es:['Solicitud de ficha técnica','Empresa:\nPaís:\nProducto / aplicación:\nVolumen anual estimado:\n']
-    };
-    document.querySelectorAll('.copy-btn').forEach(function(b){
-      b.addEventListener('click', function(){
-        if(!navigator.clipboard) return;
-        navigator.clipboard.writeText(b.dataset.copy).then(function(){
-          b.classList.add('copied');
-          setTimeout(function(){ b.classList.remove('copied'); }, 1500);
-        });
-      });
-    });
-    function setLang(lang){
-      var i = IDX[lang];
-      nodes.forEach(function(o){
-        o.n.nodeValue = i == null ? o.pt : o.pt.replace(o.pt.trim(), T[o.key][i]);
-      });
-      attrs.forEach(function(o){ o.el.setAttribute(o.a, i == null ? o.pt : T[o.pt][i]); });
-      document.documentElement.lang = lang;
-      var mail = MAIL[lang] || MAIL.pt;
-      document.querySelectorAll('a[data-product]').forEach(function(a){
-        var p = a.dataset.product, name = p && (i == null || !T[p] ? p : T[p][i]);
-        a.href = 'mailto:ysclpharma@ysclpharma.com?subject=' + encodeURIComponent(mail[0] + (name ? ' — ' + name : '')) + '&body=' + encodeURIComponent(mail[1]);
-      });
-      document.querySelectorAll('.lang-switch button').forEach(function(b){
-        b.setAttribute('aria-pressed', b.dataset.lang === lang ? 'true' : 'false');
-      });
-      try{ localStorage.setItem('lang', lang); }catch(e){}
-      eqCards();
-    }
-    // Raw material cards: same image height on desktop (tallest text wins)
-    var cards = document.querySelectorAll('.product');
-    function eqCards(){
-      cards.forEach(function(c){ c.style.removeProperty('--row-h'); });
-      if(matchMedia('(max-width:900px)').matches) return;
-      var h = 0;
-      cards.forEach(function(c){ h = Math.max(h, c.querySelector('.product-body').offsetHeight); });
-      cards.forEach(function(c){ c.style.setProperty('--row-h', h + 'px'); });
-    }
-    addEventListener('resize', eqCards);
-    if(document.fonts) document.fonts.ready.then(eqCards);
-    document.querySelectorAll('.lang-switch button').forEach(function(b){
-      b.addEventListener('click', function(){ setLang(b.dataset.lang); });
-    });
-    var saved; try{ saved = localStorage.getItem('lang'); }catch(e){}
-    setLang(saved && (saved in IDX || saved === 'pt') ? saved : 'pt');
-  })();
-</script>
+<dialog class="mail-dialog" id="mail-dialog" aria-labelledby="mail-dialog-title">
+  <button type="button" class="mail-close" aria-label="Fechar">&times;</button>
+  <h2 id="mail-dialog-title">Pedido de ficha técnica</h2>
+  <p class="mail-intro">O seu programa de email deve abrir com o pedido já preenchido. Se não abriu, use uma das opções abaixo.</p>
+  <div class="mail-row"><span class="mail-addr">ysclpharma@ysclpharma.com</span><button type="button" class="copy-btn" data-copy="ysclpharma@ysclpharma.com" aria-label="Copiar email"><svg class="cp" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><svg class="ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg></button></div>
+  <label for="mail-text">Texto do pedido</label>
+  <textarea id="mail-text" rows="7" readonly></textarea>
+  <div class="mail-actions">
+    <button type="button" class="btn btn-outline" id="mail-copy-text">Copiar texto</button>
+    <a class="btn btn-outline" id="mail-gmail" href="https://mail.google.com/" target="_blank" rel="noopener">Abrir no Gmail</a>
+    <a class="btn btn-outline" id="mail-outlook" href="https://outlook.office.com/mail/" target="_blank" rel="noopener">Abrir no Outlook</a>
+  </div>
+</dialog>
+<script src="app.js"></script>
 </body>
 </html>
